@@ -4,5 +4,5 @@ class Executor:
         self.memory = memory
 
     def execute(self, decoded):
-        # futuro: executar instruções reais
+        #futuro: executar instruções reais
         pass
