@@ -1,17 +1,22 @@
 from bus.bus import Bus
+from asm.asm import lui, addi, sw
 
 bus = Bus()
 
-bus.memory.store_word(0x0000, 0x00F00093)
+#Programa RISC-V escrito diretamente na RAM
+#Objetivo: escrever "Hi" na VRAM
 
-bus.memory.store_word(0x0004, 0x0050F113)
+# x1 = 0x80000 (base da VRAM)
+bus.ram.store_word(0x00000, lui(1, 0x80))     
+bus.ram.store_word(0x00004, addi(1, 1, 0))  
 
-bus.memory.store_word(0x0008, 0x0020C1B3)
+# x2 = 'H' 
+bus.ram.store_word(0x00008, addi(2, 0, 0x48))
+bus.ram.store_word(0x0000C, sw(2, 1, 0)) # VRAM[0]
 
-# Executa 3 instruções
-bus.run(3)
+# x2 = 'i' 
+bus.ram.store_word(0x00010, addi(2, 0, 0x69))
+bus.ram.store_word(0x00014, sw(2, 1, 1))  # VRAM[1]
 
-# Verificando resultados nos registradores
-print("x1 =", bus.cpu.regs.read(1)) 
-print("x2 =", bus.cpu.regs.read(2)) 
-print("x3 =", bus.cpu.regs.read(3)) 
+#roda programa em 20 instruções
+bus.run(20)
