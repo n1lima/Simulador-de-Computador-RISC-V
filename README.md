@@ -2,6 +2,8 @@
 
 Este projeto é um simulador de arquitetura de computador baseado no conjunto de instruções **RISC-V RV32I Base Integer ISA**, desenvolvido em Python. O simulador segue uma arquitetura modular de ciclo único e implementa os principais componentes de um sistema computacional: **CPU**, **Barramento** e **Memória** (RAM/VRAM).
 
+## Vídeo Explicativo
+Para uma explicação detalhada do funcionamento do simulador, assista ao vídeo: [Simulador RISC-V - Explicação Completa](https://youtu.be/rQvLx0OxTmE?si=HDHAZv5EDEKbszK-)
 
 ## Funcionalidades
 
